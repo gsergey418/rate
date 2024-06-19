@@ -16,7 +16,7 @@ def get_rate(request):
         to_cur = CharField(min_length=3, max_length=3).clean(
             request.GET["to"]).upper()
         amount = IntegerField().clean(request.GET["value"])
-    except ValidationError:
+    except (ValidationError, KeyError):
         return Response({"message": "Необходимые параметры: from, to, value"}, status=400)
 
     try:
