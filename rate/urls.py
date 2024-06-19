@@ -16,7 +16,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from .views import get_rate
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('api/rates', get_rate, name="get_rate")
 ]
